@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./app.js",
-    "build": "cd front && yarn install && yarn run build"
+    "build": "cd front && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
