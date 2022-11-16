@@ -60,3 +60,4 @@ npm install prettier
 3. View Application Record
 
 4. Edit Application
+<img width="1089" alt="screenshot_editapp" src="">
