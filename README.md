@@ -60,4 +60,4 @@ npm install prettier
 3. View Application Record
 
 4. Edit Application
-<img width="1089" alt="screenshot_editapp" src="">
+<img width="1089" alt="screenshot_editapp" src="https://github.com/XinleiSherry/JobApplicationTracker/blob/main/front/src/img/editapp.png">
