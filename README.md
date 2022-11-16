@@ -1,4 +1,4 @@
-# xinlei.github.io
+# xinleiSherry/JobApplicationTracker
 This repo is a web application that provide a job application tracker for users to record all needed information about their applications.
 
 **Author:**
