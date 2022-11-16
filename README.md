@@ -51,6 +51,8 @@ npm install prettier
 1. HTML5
 2. CSS3
 3. JavaScript
+4. Node.js express
+5. REACT
 
 ## How this website looks like:
 1. Sign Up and Log In
@@ -60,4 +62,4 @@ npm install prettier
 3. View Application Record
 
 4. Edit Application
-<img width="1089" alt="screenshot_editapp" src="https://github.com/XinleiSherry/JobApplicationTracker/blob/main/front/src/img/editapp.png">
+<img width="1089" alt="screenshot_editapp" src="https://github.com/XinleiSherry/JobApplicationTracker/blob/main/front/document/editapp.png">
