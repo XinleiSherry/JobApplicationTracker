@@ -1,2 +1,11 @@
-[aria-label=Pagination]{display:flex;justify-content:flex-end;list-style-type:none;margin-top:10px;padding:0;-webkit-user-select:none;user-select:none}[aria-label=Pagination] li{align-items:center;border:1px solid #ddd;border-radius:6px;box-sizing:border-box;display:flex;height:30px;justify-content:center;padding:0 10px}[aria-label=Pagination] li.selected{background-color:#294666;color:#fff}[aria-label=Pagination] li+li{margin-left:10px}
+[aria-label=Pagination]
+{display:flex;justify-content:flex-end;list-style-type:none;
+    margin-top:10px;padding:0;-webkit-user-select:none;user-select:none}
+    [aria-label=Pagination] 
+    li{align-items:center;border:1px solid #ddd;border-radius:6px;box-sizing:border-box;
+        display:flex;height:30px;justify-content:center;padding:0 10px}
+        [aria-label=Pagination] 
+        li.selected{background-color:#294666;color:#fff}
+        [aria-label=Pagination] 
+        li+li{margin-left:10px}
 /*# sourceMappingURL=main.515de457.css.map*/

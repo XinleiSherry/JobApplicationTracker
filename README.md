@@ -1,5 +1,5 @@
 # xinlei.github.io
-This repo contains all projects learned and practiced on course cs5610 web development
+This repo is a web application that provide a job application tracker for users to record all needed information about their applications.
 
 **Author:**
  Xinlei Hu
@@ -35,6 +35,8 @@ Users can create account, record all job application information, and search for
 npm init -y
 npm i express
 npm i --save--dev nodemon
+npm start
+npm build
 npm i bcrypt
 npm install mongodb
 npm install eslint
