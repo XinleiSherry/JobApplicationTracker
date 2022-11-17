@@ -116,7 +116,8 @@ function Login() {
                 password: md5(password),
                 email
             };
-            let xhr = new XMLHttpRequest();
+            let xhr = new XMLHttpRequest(); 
+            // path
             xhr.open('POST', `/user/add`);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
             const usp = new URLSearchParams(data)
