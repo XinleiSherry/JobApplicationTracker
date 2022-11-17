@@ -1,9 +1,11 @@
+const uri = process.env.MONGODB_URI;
 const express = require("express"),
   bodyparser = require("body-parser"),
   path = require("path"),
   app = express(),
   pathroutes = path.resolve(__dirname, "routers"),
   server = "7024";
+  console.log(uri);
 app.listen(server, () => {
   console.log(
     `THE WEB SERVICE SUCCESSFULLY AND LISTENING TO THE PORT：${server}!`
