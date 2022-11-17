@@ -1,8 +1,9 @@
+const uri = process.env.MONGODB_URI;
 function link() {
   return new Promise((resolve) => {
     var MongoClient = require("mongodb").MongoClient;
     MongoClient.connect(
-      "mongodb://localhost:27017/net",
+      uri,
       { useUnifiedTopology: true },
       function (err, client) {
         if (err) throw err;
