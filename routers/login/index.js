@@ -3,7 +3,7 @@ const api = require("../../utils/api"),
   login = express.Router();
 
 // add user
-login.post("/", async (req, res) => {
+login.post("/login", async (req, res) => {
   let { userName, password } = req.body;
   let info = await api.find("user", { userName, password });
   if (info) {
