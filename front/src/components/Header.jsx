@@ -121,7 +121,7 @@ function Header() {
                         id: userInfo.id
                     };
                     let xhr = new XMLHttpRequest();
-                    xhr.open('delete', `http://127.0.0.1:${process.env.PORT}/user/delete`);
+                    xhr.open('delete', `/user/delete`);
                     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
                     const usp = new URLSearchParams(data)
                     const query = usp.toString()
@@ -167,7 +167,7 @@ function Header() {
                         id: userInfo.id
                     };
                     let xhr = new XMLHttpRequest();
-                    xhr.open('put', `http://127.0.0.1:${process.env.PORT}/user/update`);
+                    xhr.open('put', `/user/update`);
                     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
                     const usp = new URLSearchParams(data)
                     const query = usp.toString()

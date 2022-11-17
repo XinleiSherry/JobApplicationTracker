@@ -117,7 +117,7 @@ function Login() {
                 email
             };
             let xhr = new XMLHttpRequest();
-            xhr.open('POST', `http://127.0.0.1:${process.env.PORT}/user/add`);
+            xhr.open('POST', `/user/add`);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
             const usp = new URLSearchParams(data)
             const query = usp.toString()
