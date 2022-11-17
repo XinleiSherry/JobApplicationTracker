@@ -4,8 +4,8 @@ const express = require("express"),
   path = require("path"),
   app = express(),
   pathroutes = path.resolve(__dirname, "routers"),
-  server = "7024";
-  console.log(uri);
+  server = process.env.PORT;
+  console.log(uri, server);
 app.listen(server, () => {
   console.log(
     `THE WEB SERVICE SUCCESSFULLY AND LISTENING TO THE PORT：${server}!`

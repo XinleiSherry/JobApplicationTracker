@@ -96,7 +96,7 @@ function Login() {
                 password: md5(password),
             };
             let xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://127.0.0.1:7024/login/login');
+            xhr.open('POST', `http://127.0.0.1:${process.env.PORT}/login/login`);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
             const usp = new URLSearchParams(data)
             const query = usp.toString()
