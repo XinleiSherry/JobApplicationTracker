@@ -23,6 +23,7 @@ app.use((req, res, next) => {
   }
   next();
 });
+app.use((express.static(path.join(__dirname, "./front/build"))));
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 app.use("/login", require(`${pathroutes}/login`));
