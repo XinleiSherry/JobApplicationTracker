@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addUserInfo } from '../store/features/user/userSlice'
 
 function Header() {
+    console.log(process.env.PORT);
     let navigate = useNavigate();
 
     let [alart, setAlart] = useState({
