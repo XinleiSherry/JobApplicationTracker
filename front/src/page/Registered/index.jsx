@@ -117,7 +117,7 @@ function Login() {
                 email
             };
             let xhr = new XMLHttpRequest(); 
-            // path
+            // edited
             xhr.open('POST', `/user/add`);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
             const usp = new URLSearchParams(data)
