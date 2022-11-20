@@ -1,5 +1,5 @@
-import './home.css'
 import React, { useEffect, useState } from 'react'
+import './home.css'
 import {
     Table,
     Thead,
@@ -79,7 +79,7 @@ function Home() {
         let xhr = new XMLHttpRequest();
         const usp = new URLSearchParams(data)
         const query = usp.toString()
-        xhr.open('get', `/applyfor/list?${query}`);
+        xhr.open('get', `http://127.0.0.1:7024/applyfor/list?${query}`);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
 
 
@@ -96,16 +96,16 @@ function Home() {
     const returnState = (state) => {
         switch (+state) {
             case 1: {
-                return 'Applied'
+                return 'Submit an application'
             }
             case 2: {
-                return 'OA'
+                return 'The written test'
             }
             case 3: {
-                return 'VO'
+                return 'The interview'
             }
             case 4: {
-                return 'Results'
+                return 'Admission Results'
             }
         }
     }
@@ -117,7 +117,7 @@ function Home() {
                 <Input placeholder='Please enter the keyword' onChange={(e)=>{
                   setSerchContent(e.target.value);  
                 }} />
-                <InputRightAddon children='search' style={{ cursor: 'pointer' }} onClick={()=>{
+                <InputRightAddon children='serch' style={{ cursor: 'pointer' }} onClick={()=>{
                     getData();
                 }} />
             </InputGroup>
@@ -188,10 +188,10 @@ function Home() {
                                     status: e.target.value
                                 })
                             }}>
-                                <option value='1'>Applied</option>
-                                <option value='2'>OA</option>
-                                <option value='3'>VO</option>
-                                <option value='4'>Results</option>
+                                <option value='1'>Submit an application</option>
+                                <option value='2'>The written test</option>
+                                <option value='3'>The interview</option>
+                                <option value='4'>Admission Results</option>
                             </Select>
                         </InputGroup>
                         <InputGroup>
@@ -267,7 +267,7 @@ function Home() {
                         let xhr = new XMLHttpRequest();
                         // setCurState('add');
 
-                        xhr.open(`${curState === 'save' ? 'POST' : 'PUT'}`, `${curState === 'save' ? `/applyfor/add` : `/applyfor/update`}`);
+                        xhr.open(`${curState === 'save' ? 'POST' : 'PUT'}`, `${curState === 'save' ? 'http://127.0.0.1:7024/applyfor/add' : 'http://127.0.0.1:7024/applyfor/update'}`);
                         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
                         const usp = new URLSearchParams(data)
                         const query = usp.toString()
@@ -334,7 +334,7 @@ function Home() {
                     <Button colorScheme='red' ml={3} onClick={()=>{
                         let xhr = new XMLHttpRequest();
                         // setCurState('add');
-                        xhr.open('delete',`/applyfor/delete?id=${delID}`);
+                        xhr.open('delete',`http://127.0.0.1:7024/applyfor/delete?id=${delID}`);
                         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
                         xhr.send()
                         xhr.addEventListener('load', function () {
@@ -360,9 +360,9 @@ function Home() {
                         <Tr>
                             <Th>Company</Th>
                             <Th>Position</Th>
-                            <Th>Status</Th>
-                            <Th>Date</Th>
-                            <Th>Operation</Th>
+                            <Th >Status</Th>
+                            <Th >Date</Th>
+                            <Th >Operation</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
@@ -404,7 +404,6 @@ function Home() {
                 </Table>
             </TableContainer>
             <ReactPaginate
-                className='navigation_wait'
                 breakLabel="..."
                 nextLabel="next >"
                 onPageChange={handlePageClick}
@@ -414,6 +413,7 @@ function Home() {
                 renderOnZeroPageCount={null}
             />
         </Box>
+
     </div>
 }
 
