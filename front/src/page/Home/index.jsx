@@ -403,8 +403,8 @@ function Home() {
                     </Tbody>
                 </Table>
             </TableContainer>
-        </Box>
-        <ReactPaginate
+            <ReactPaginate
+                className='navigation_wait'
                 breakLabel="..."
                 nextLabel="next >"
                 onPageChange={handlePageClick}
@@ -412,8 +412,8 @@ function Home() {
                 pageCount={pageCount}
                 previousLabel="< previous"
                 renderOnZeroPageCount={null}
-        />
-
+            />
+        </Box>
     </div>
 }
 
