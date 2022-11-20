@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Page from '../../components/Page'
 import './home.css'
 import {
     Table,
@@ -44,9 +45,9 @@ function Home() {
         state: -1,
         content: ''
     })
-    const handlePageClick = ({ selected }) => {
-        setCurPage(selected);
-        getData(selected)
+    const handlePageClick = (selected) => {
+        setCurPage(selected-1);
+        getData(selected-1)
     }
     let [formTitle, setFormTitle] = useState('');
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -403,7 +404,8 @@ function Home() {
                     </Tbody>
                 </Table>
             </TableContainer>
-            <ReactPaginate
+            <Page totalPage={Math.ceil(pageCount) }  pageCallbackFn={handlePageClick}/>
+            {/* <ReactPaginate
                 breakLabel="..."
                 nextLabel="next >"
                 onPageChange={handlePageClick}
@@ -411,7 +413,7 @@ function Home() {
                 pageCount={pageCount}
                 previousLabel="< previous"
                 renderOnZeroPageCount={null}
-            />
+            /> */}
         </Box>
 
     </div>
