@@ -1,3 +1,4 @@
+import './home.css'
 import React, { useEffect, useState } from 'react'
 import {
     Table,
@@ -32,7 +33,6 @@ import {
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import { useSelector } from 'react-redux'
 import ReactPaginate from 'react-paginate';
-import './home.css'
 function Home() {
     let [serchContent,setSerchContent] = useState('')
     let [delID,setDelID] = useState('');
