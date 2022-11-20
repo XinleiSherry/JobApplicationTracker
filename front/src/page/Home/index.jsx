@@ -404,6 +404,7 @@ function Home() {
                 </Table>
             </TableContainer>
             <ReactPaginate
+                className="navigation_wait"
                 breakLabel="..."
                 nextLabel="next >"
                 onPageChange={handlePageClick}
