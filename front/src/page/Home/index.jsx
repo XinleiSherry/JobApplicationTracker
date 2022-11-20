@@ -360,9 +360,9 @@ function Home() {
                         <Tr>
                             <Th>Company</Th>
                             <Th>Position</Th>
-                            <Th >Status</Th>
-                            <Th >Date</Th>
-                            <Th >Operation</Th>
+                            <Th>Status</Th>
+                            <Th>Date</Th>
+                            <Th>Operation</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
@@ -412,7 +412,7 @@ function Home() {
                 pageCount={pageCount}
                 previousLabel="< previous"
                 renderOnZeroPageCount={null}
-            />
+        />
 
     </div>
 }
