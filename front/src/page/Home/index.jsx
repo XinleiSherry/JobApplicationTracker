@@ -79,7 +79,7 @@ function Home() {
         let xhr = new XMLHttpRequest();
         const usp = new URLSearchParams(data)
         const query = usp.toString()
-        xhr.open('get', `http://127.0.0.1:7024/applyfor/list?${query}`);
+        xhr.open('get', `/applyfor/list?${query}`);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
 
 
@@ -267,7 +267,7 @@ function Home() {
                         let xhr = new XMLHttpRequest();
                         // setCurState('add');
 
-                        xhr.open(`${curState === 'save' ? 'POST' : 'PUT'}`, `${curState === 'save' ? 'http://127.0.0.1:7024/applyfor/add' : 'http://127.0.0.1:7024/applyfor/update'}`);
+                        xhr.open(`${curState === 'save' ? 'POST' : 'PUT'}`, `${curState === 'save' ? '/applyfor/add' : '/applyfor/update'}`);
                         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
                         const usp = new URLSearchParams(data)
                         const query = usp.toString()
@@ -334,7 +334,7 @@ function Home() {
                     <Button colorScheme='red' ml={3} onClick={()=>{
                         let xhr = new XMLHttpRequest();
                         // setCurState('add');
-                        xhr.open('delete',`http://127.0.0.1:7024/applyfor/delete?id=${delID}`);
+                        xhr.open('delete',`/applyfor/delete?id=${delID}`);
                         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
                         xhr.send()
                         xhr.addEventListener('load', function () {
