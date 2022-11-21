@@ -1,4 +1,4 @@
-# xinleiSherry/JobApplicationTracker
+# JobApplicationTracker
 This repo is a web application that provide a job application tracker for users to record all needed information about their applications.
 
 **Author:**
@@ -6,16 +6,16 @@ This repo is a web application that provide a job application tracker for users 
  hu.xinl@northeastern.edu
 
 **Website Link**
-[Project3](https://github.com/XinleiSherry/Job-Application-Tracker)
+[Project3](https://github.com/XinleiSherry/JobApplicationTracker)
 
 **Demo Link**
-[Project3 Video Demo](https://www.youtube.com/channel/UCIrrUkfxCwGYFzL9_8JZ4zg/videos)
+[Project3 Video Demo](https://youtu.be/YGS9fBCfKOg)
 
 **Presentation Link**
 [Google Slides Link](https://docs.google.com/presentation/d/1jNK9H21Iy7H18Z45O1fF39J8oSFyB3cggLarHquPji8/edit?usp=sharing)
 
 **Design Document**
-[Design Document](https://github.com/XinleiSherry/xinlei.github.io/blob/main/document/Design%20Document_Xinlei%20Hu.pdf)
+[Design Document](https://docs.google.com/document/d/1ClD_y5na-4N0zE849l8INxw8mceb8D2tSydhyy07rUc/edit?usp=sharing)
 
 **Class Link**
 [CS5610 Web Development Course](https://johnguerra.co/classes/webDevelopment_fall_2022/)
@@ -51,15 +51,16 @@ npm install prettier
 1. HTML5
 2. CSS3
 3. JavaScript
-4. Node.js express
-5. REACT
+4. Node.js 
+5. express
+6. React
 
 ## How this website looks like:
 1. Sign Up and Log In
-
+![](./front/document/edit.png)
 2. User Management
-
+![](./front/document/user.png)
 3. View Application Record
-
+![](./front/document/list.png)
 4. Edit Application
-<img width="1089" alt="screenshot_editapp" src="https://github.com/XinleiSherry/JobApplicationTracker/blob/main/front/document/editapp.png">
+![](./front/document/edit.png)
