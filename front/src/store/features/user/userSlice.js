@@ -1,3 +1,4 @@
+//I'd recommend minor changes to your directory structure
 let initialState = {
   userInfo: null
 };
