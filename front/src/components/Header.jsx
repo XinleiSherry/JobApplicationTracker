@@ -15,6 +15,7 @@ import {
     AlertDescription,
     Text
 } from '@chakra-ui/react';
+//some of these imported components probably could have been pretty straightforward to implement from scratch
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUserInfo } from '../store/features/user/userSlice'
