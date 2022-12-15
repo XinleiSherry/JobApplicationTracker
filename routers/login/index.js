@@ -3,6 +3,7 @@ const api = require("../../utils/api"),
   login = express.Router();
 
 // add user
+// suggestions for separating a complete controller file for the function starting from async 
 login.post("/login", async (req, res) => {
   let { userName, password } = req.body;
   let info = await api.find("user", { userName, password });
