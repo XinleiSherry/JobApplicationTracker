@@ -97,7 +97,7 @@ refer to https://color.adobe.com/create/color-wheel
 ![](./front/document/colorPallet2.png)
 
 ## Font
-SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",monospace
+SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
 
 ## Job Application Tracker v1.0 looks like:
 1. Sign Up and Log In - Before
