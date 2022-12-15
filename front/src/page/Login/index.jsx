@@ -10,9 +10,11 @@ import {
     Box,
     InputRightElement
 } from '@chakra-ui/react';
+
+import { LinkIcon } from '@chakra-ui/icons'
 import { Link, useNavigate } from 'react-router-dom';
 import md5 from 'md5';
-import {addUserInfo}  from '../../store/features/user/userSlice'
+import { addUserInfo } from '../../store/features/user/userSlice'
 import { useDispatch } from 'react-redux';
 
 
@@ -34,10 +36,14 @@ function Login() {
         setUserName('');
         setPassword('');
     }
-    return <Stack spacing={6} w="30%" margin='0 auto' style={{ marginTop: '120px' }}>
-        <FormControl isInvalid={userNameError}>
+    return <Stack transform="scale(1.1)" spacing={6} w="30%" margin='0 auto' boxShadow={'4px 4px 10px 1px rgb(0 0 0 / 20%)'} borderRadius="30px" style={{ marginTop: '120px' }} padding="30px" backgroundColor='#FFF'>
+        <FormControl isInvalid={userNameError} >
 
-            <InputGroup>
+            <Box textAlign='center' marginBottom="20px" fontWeight='bold' fontSize='2xl'>
+                Login
+            </Box>
+
+            <InputGroup boxShadow="2px 2px 3px 1px rgb(0 0 0 / 20%) !import" borderRadius="6px">
                 <InputLeftAddon children='UserName:' w='110px' />
                 <Input value={userName} type='tel' placeholder='User Name' onChange={({ target }) => {
                     let { value } = target;
@@ -52,8 +58,8 @@ function Login() {
                 <FormErrorMessage>User name is required.</FormErrorMessage>
             )}
         </FormControl>
-        <FormControl isInvalid={passwordError}>
-            <InputGroup>
+        <FormControl isInvalid={passwordError} >
+            <InputGroup boxShadow="2px 2px 3px 1px rgb(0 0 0 / 20%)" borderRadius="6px">
                 <InputLeftAddon children='Password:' w='110px' />
                 <Input value={password} type={show ? 'text' : 'password'} placeholder='Password' onChange={({ target }) => {
                     let { value } = target;
@@ -102,7 +108,7 @@ function Login() {
             const query = usp.toString()
             xhr.send(query)
             xhr.addEventListener('load', function () {
-                let { status, msg,userInfo } = JSON.parse(this.response);
+                let { status, msg, userInfo } = JSON.parse(this.response);
                 if (+status === 0) {
                     // success
                     setAlart({
@@ -127,7 +133,11 @@ function Login() {
                 }
             })
         }}>Login</Button>
-        <Link to='/registered'>Don't you have an account yet? Go ahead and sign up for one !</Link>
+
+        <Box>
+            <Link to='/registered' style={{ fontWeight: "bold" }}><LinkIcon w={7} height={7} color="#6ea2dc" />  Don't you have an account yet? Go ahead and sign up for one !</Link>
+        </Box>
+
     </Stack>
 }
 

@@ -1,0 +1,12 @@
+.css-b0j76j[aria-invalid=true],
+.css-b0j76j[data-invalid],
+.css-b41ozg[aria-invalid=true],
+.css-b41ozg[data-invalid] {
+    box-shadow: none !important;
+    border-color: #e7e7e7 !important;
+
+}
+
+[role="dialog"] {
+    background-color: #ffe9f1 !important;
+}

@@ -2,14 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Page from '../../components/Page'
 import './home.css'
 import {
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
     Input,
-    TableContainer,
     Box,
     InputGroup,
     InputRightAddon,
@@ -31,12 +24,11 @@ import {
     AlertDescription,
     IconButton
 } from '@chakra-ui/react'
-import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
+import { DeleteIcon, EditIcon, Search2Icon, AddIcon } from '@chakra-ui/icons'
 import { useSelector } from 'react-redux'
-import ReactPaginate from 'react-paginate';
 function Home() {
-    let [serchContent,setSerchContent] = useState('')
-    let [delID,setDelID] = useState('');
+    let [serchContent, setSerchContent] = useState('')
+    let [delID, setDelID] = useState('');
     let [curState, setCurState] = useState('curState');
     let { userInfo } = useSelector(state => state.user)
     let [curPage, setCurPage] = useState(0);
@@ -46,14 +38,14 @@ function Home() {
         content: ''
     })
     const handlePageClick = (selected) => {
-        setCurPage(selected-1);
-        getData(selected-1)
+        setCurPage(selected - 1);
+        getData(selected - 1)
     }
     let [formTitle, setFormTitle] = useState('');
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen: isOpen1, onOpen: onOpen1, onClose: onClose1 } = useDisclosure()
 
-
+    const colorAry = ['#a5dee5', '#e0f9b5', '#fefdca', '#ffcfdf']
     const cancelRef = React.useRef()
     const cancelRef1 = React.useRef()
 
@@ -73,23 +65,23 @@ function Home() {
     const getData = (page) => {
         let data = {
             skip: page || 0,
-            limit: 5,
+            limit: 9,
             userid: userInfo.id,
-            serch:serchContent
+            serch: serchContent
         }
         let xhr = new XMLHttpRequest();
         const usp = new URLSearchParams(data)
         const query = usp.toString()
-        xhr.open('get', `/applyfor/list?${query}`);
+        xhr.open('POST', `/applyfor/list`);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
 
 
-        xhr.send()
+        xhr.send(query)
         xhr.addEventListener('load', function () {
             let { status, data, dataLength } = JSON.parse(this.response);
             if (+status === 0) {
                 setTableData(data);
-                setPageCount(dataLength / 5);
+                setPageCount(dataLength / 9);
             }
         })
     }
@@ -112,23 +104,17 @@ function Home() {
     }
 
     return <div>
-        <Box textAlign='center' fontSize='32px' m='60px'>Application List</Box>
-        <Box w='40%' margin='0 auto'>
+        <Box textAlign='center' fontSize='42px' fontWeight={'bold'} m='26px'>Application List</Box>
+        <Box w='40%' margin='20px auto' backgroundColor={'#fefefe'} padding="16px" borderRadius={'20px'}>
             <InputGroup>
-                <Input placeholder='Please enter the keyword' onChange={(e)=>{
-                  setSerchContent(e.target.value);  
+                <Input placeholder='Please enter company name' onChange={(e) => {
+                    setSerchContent(e.target.value);
                 }} />
-                <InputRightAddon children='serch' style={{ cursor: 'pointer' }} onClick={()=>{
+
+                <InputRightAddon children={<Search2Icon w={6} h={6} />} style={{ cursor: 'pointer' }} onClick={() => {
                     getData();
                 }} />
             </InputGroup>
-        </Box>
-        <Box m='30px 170px' display={'flex'} justifyContent='flex-end'>
-            <Button onClick={() => {
-                setCurState('save');
-                setFormTitle('Create New Appliction');
-                onOpen()
-            }}>+ new</Button>
         </Box>
         <AlertDialog
             motionPreset='slideInBottom'
@@ -151,13 +137,6 @@ function Home() {
             isCentered
         >
             <AlertDialogOverlay />
-
-
-
-
-
-
-
             <AlertDialogContent>
                 <AlertDialogHeader>{formTitle}</AlertDialogHeader>
                 <AlertDialogCloseButton />
@@ -255,8 +234,6 @@ function Home() {
                             })
                             return;
                         }
-                        console.log(userInfo);
-
                         let data = {
                             company,
                             position,
@@ -266,8 +243,6 @@ function Home() {
                             id: curState
                         };
                         let xhr = new XMLHttpRequest();
-                        // setCurState('add');
-
                         xhr.open(`${curState === 'save' ? 'POST' : 'PUT'}`, `${curState === 'save' ? '/applyfor/add' : '/applyfor/update'}`);
                         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
                         const usp = new URLSearchParams(data)
@@ -332,10 +307,9 @@ function Home() {
                     <Button ref={cancelRef1} onClick={onClose1}>
                         No
                     </Button>
-                    <Button colorScheme='red' ml={3} onClick={()=>{
+                    <Button colorScheme='red' ml={3} onClick={() => {
                         let xhr = new XMLHttpRequest();
-                        // setCurState('add');
-                        xhr.open('delete',`/applyfor/delete?id=${delID}`);
+                        xhr.open('delete', `/applyfor/delete?id=${delID}`);
                         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
                         xhr.send()
                         xhr.addEventListener('load', function () {
@@ -344,7 +318,7 @@ function Home() {
                                 // success
                                 onClose1();
                                 getData(curPage);
-                            } 
+                            }
                         })
                     }}>
                         Yes
@@ -355,65 +329,69 @@ function Home() {
 
 
         <Box m='0px 170px' >
-            <TableContainer>
-                <Table variant='simple'>
-                    <Thead>
-                        <Tr>
-                            <Th>Company</Th>
-                            <Th>Position</Th>
-                            <Th >Status</Th>
-                            <Th >Date</Th>
-                            <Th >Operation</Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        {tableData.map(item => <Tr key={item.id}>
-                            <Td>{item.company}</Td>
-                            <Td>{item.position}</Td>
-                            <Td>{returnState(item.status)}</Td>
-                            <Td>{item.date}</Td>
-                            <Td>
-                                <Stack direction='row' spacing={4}>
-                                    <IconButton
-                                        onClick={() => {
-                                            let { company, position, status, date, id } = item;
-                                            setCurState(id);
-                                            onOpen();
-                                            setFormState({
-                                                company: company,
-                                                position: position,
-                                                status: status,
-                                                date: date,
-                                            });
-                                        }}
-                                        colorScheme='teal'
-                                        icon={<EditIcon />}
-                                    />
-                                    <IconButton
-                                        onClick={() => {
-                                            let {  id } = item;
-                                            setDelID(id);
-                                            onOpen1();
-                                        }}
-                                        colorScheme='red'
-                                        icon={<DeleteIcon />}
-                                    />
-                                </Stack>
-                            </Td>
-                        </Tr>)}
-                    </Tbody>
-                </Table>
-            </TableContainer>
-            <Page totalPage={Math.ceil(pageCount) }  pageCallbackFn={handlePageClick}/>
-            {/* <ReactPaginate
-                breakLabel="..."
-                nextLabel="next >"
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={5}
-                pageCount={pageCount}
-                previousLabel="< previous"
-                renderOnZeroPageCount={null}
-            /> */}
+            <Box display='flex' justifyContent='flex-start' flexWrap={'wrap'} >
+                {tableData.map(item => {
+                    return <Box position={'relative'} width={'250px'} height="250px" boxSizing="border-box" boxShadow={'2px 2px 3px 1px rgb(0 0 0 / 20%) !important'} padding="20px" margin={'20px'} backgroundColor={colorAry[item.status - 1]} borderRadius={'30px'}>
+                        <Box lineHeight={'36px'}>
+                            Company：<span display={'inline-block'}>{item.company}</span>
+                        </Box>
+                        <Box lineHeight={'36px'}>
+                            Position： <span textOverflow={'clip'} display={'inline-block'}>{item.position}</span>
+                        </Box>
+                        <Box lineHeight={'36px'} >
+                            Status： <span  >{returnState(item.status)}</span>
+                        </Box>
+                        <Box lineHeight={'36px'}>
+                            Date：  <span  >{item.date}</span>
+                        </Box>
+
+                        <Box position={'absolute'} right="20px" bottom={'14px'}>
+                            {<Stack direction='row' spacing={4} justifyContent="flex-end" marginTop={'10px'}>
+                                <IconButton
+                                    size={'xs'}
+                                    onClick={() => {
+                                        let { company, position, status, date, id } = item;
+                                        setCurState(id);
+                                        onOpen();
+                                        setFormState({
+                                            company: company,
+                                            position: position,
+                                            status: status,
+                                            date: date,
+                                        });
+                                    }}
+                                    colorScheme='teal'
+                                    icon={<EditIcon />}
+                                />
+                                <IconButton
+                                    size={'xs'}
+
+                                    onClick={() => {
+                                        let { id } = item;
+                                        setDelID(id);
+                                        onOpen1();
+                                    }}
+                                    colorScheme='red'
+                                    icon={<DeleteIcon />}
+                                />
+                            </Stack>}
+                        </Box>
+                    </Box>
+                })}
+
+
+                <Box onClick={() => {
+                    setCurState('save');
+                    setFormTitle('Create New Appliction');
+                    onOpen()
+                }} width={'250px'} cursor="pointer" display="flex" justifyContent={'center'} alignItems="center" height="250px" boxSizing="border-box" boxShadow={'2px 2px 3px 1px rgb(0 0 0 / 20%) !important'} padding="20px" margin={'20px'} backgroundColor={'#f9f0f0'} borderRadius={'30px'}>
+                    <AddIcon w={20} h={20} color="#787878" />
+                </Box>
+
+            </Box>
+            <Box position={'fixed'} bottom="20px" right={'90px'}>
+                <Page totalPage={Math.ceil(pageCount)} pageCallbackFn={handlePageClick} />
+            </Box>
         </Box>
 
     </div>

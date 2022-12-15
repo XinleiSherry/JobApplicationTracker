@@ -6,9 +6,9 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    Input, InputGroup,  FormControl,
+    Input, InputGroup, FormControl,
     FormErrorMessage,
-    FormHelperText,  
+    FormHelperText,
     Alert,
     AlertIcon,
     AlertTitle,
@@ -20,7 +20,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addUserInfo } from '../store/features/user/userSlice'
 
 function Header() {
-    console.log(process.env.PORT);
     let navigate = useNavigate();
 
     let [alart, setAlart] = useState({
@@ -35,8 +34,6 @@ function Header() {
         setUserName(userName)
         setEmail(email)
     }, [userInfo])
-    console.log(JSON.stringify(userInfo));
-
     let [userName, setUserName] = useState('')
     let [email, setEmail] = useState('')
 
@@ -47,9 +44,10 @@ function Header() {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
-    return <Box w='100%' p='20px' display='flex' alignItems='center' justifyContent='space-between' border='1px' borderBottomColor='facebook.500'>
-        <Box boxSizing="border-box" fontSize='3xl'>
-            Job  Application Tracker
+    return <Box w='100%' p='20px' display='flex' alignItems='center' backgroundColor='#6ea2dc' justifyContent='space-between' borderBottomColor='facebook.500'>
+        <Box boxSizing="border-box" color='#f5f5f5' >
+            <Box fontSize='4xl' fontWeight='bold'>Job  Application Tracker</Box>
+            <Box fontSize='xl' >This is a website for job seekers to track their job application records.</Box>
         </Box>
         <Box>
             {userInfo === null ? null : <Avatar style={{ cursor: 'pointer' }} ref={btnRef} colorScheme='teal' onClick={onOpen} />}
@@ -114,8 +112,8 @@ function Header() {
                         </Box>
                     </Alert>
                 </DrawerBody>
-              
-                <Button  colorScheme='red' m={3} onClick={() => {
+
+                <Button colorScheme='red' m={3} onClick={() => {
                     // onClose();
                     let data = {
                         id: userInfo.id
@@ -198,15 +196,15 @@ function Header() {
                         }
                     })
                 }}>Save</Button>
-                 <Button variant='outline' m={3} onClick={()=>{
-                      setAlart({
+                <Button variant='outline' m={3} onClick={() => {
+                    setAlart({
                         state: -1,
                         content: ''
                     })
                     dispatch(addUserInfo(null))
                     navigate('/');
                     onClose();
-                 }}>
+                }}>
                     Log out
                 </Button>
                 <Button variant='outline' m={3} onClick={onClose}>

@@ -1,4 +1,4 @@
-const uri = process.env.MONGODB_URI;
+const uri = 'mongodb://localhost:27017/netwo';
 function link() {
   return new Promise((resolve) => {
     var MongoClient = require("mongodb").MongoClient;
@@ -16,7 +16,7 @@ function link() {
 function find(formName, query) {
   return new Promise((resolve, reject) => {
     link().then((client) => {
-      const mydb = client.db("net");
+      const mydb = client.db("netwo");
       mydb
         .collection(formName)
         .findOne(query)
@@ -32,8 +32,8 @@ function find(formName, query) {
 function findList(formName, query, params) {
   return new Promise((resolve, reject) => {
     link().then((client) => {
-      let { limit = 5, skip = 0 } = params;
-      const mydb = client.db("net");
+      let { limit = 9, skip = 0 } = params;
+      const mydb = client.db("netwo");
       mydb
         .collection(formName)
         .find(query)
@@ -51,7 +51,7 @@ function findList(formName, query, params) {
 function findListAll(formName, query) {
   return new Promise((resolve) => {
     link().then((client) => {
-      const mydb = client.db("net");
+      const mydb = client.db("netwo");
       mydb
         .collection(formName)
         .find(query)
@@ -66,7 +66,7 @@ function findListAll(formName, query) {
 function add(formName, query) {
   return new Promise((resolve) => {
     link().then((client) => {
-      const mydb = client.db("net");
+      const mydb = client.db("netwo");
       mydb.collection(formName).insertOne(query, (err, res) => {
         if (err) throw err;
         resolve(res);
@@ -78,7 +78,7 @@ function add(formName, query) {
 function update(formName, query) {
   return new Promise((resolve, reject) => {
     link().then(async (client) => {
-      const mydb = client.db("net");
+      const mydb = client.db("netwo");
       mydb
         .collection(formName)
         .updateOne({ id: query.id }, { $set: query })
@@ -94,7 +94,7 @@ function update(formName, query) {
 function deleteData(formName, query) {
   return new Promise((resolve) => {
     link().then((client) => {
-      const mydb = client.db("net");
+      const mydb = client.db("netwo");
       mydb.collection(formName).deleteOne(query, (err, res) => {
         if (err) throw err;
         resolve(res);

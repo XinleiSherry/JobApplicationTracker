@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import './page.css';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import "./page.css";
 
-const Page = ({ totalPage:totalPageSize, pageCallbackFn, groupCount }) => {
-  const [currentPage, setCurrentPage] = useState(1); 
-  const [startPage, setStartPage] = useState(1); 
-  const [totalPage, setTotalPage] = useState(1); 
+const Page = ({ totalPage: totalPageSize, pageCallbackFn, groupCount }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [startPage, setStartPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
 
-
-  useEffect(()=>{
-    console.log(totalPageSize);
+  useEffect(() => {
     setTotalPage(totalPageSize);
-  },[totalPageSize])
+  }, [totalPageSize]);
 
   const handlePageClick = (currentPage) => {
     if (currentPage >= groupCount) {
@@ -47,7 +45,11 @@ const Page = ({ totalPage:totalPageSize, pageCallbackFn, groupCount }) => {
   const renderPageList = () => {
     let pages = [];
     pages.push(
-      <li className={currentPage === 1 ? 'nomore' : null} onClick={handlePrePageClick} key={0}>
+      <li
+        className={currentPage === 1 ? "nomore" : null}
+        onClick={handlePrePageClick}
+        key={0}
+      >
         previous
       </li>
     );
@@ -55,14 +57,22 @@ const Page = ({ totalPage:totalPageSize, pageCallbackFn, groupCount }) => {
     if (totalPage <= 10) {
       for (let i = 1; i <= totalPage; i++) {
         pages.push(
-          <li key={i} onClick={() => handlePageClick(i)} className={currentPage === i ? 'activePage' : null}>
+          <li
+            key={i}
+            onClick={() => handlePageClick(i)}
+            className={currentPage === i ? "activePage" : null}
+          >
             {i}
           </li>
         );
       }
     } else {
       pages.push(
-        <li className={currentPage === 1 ? 'activePage' : null} key={1} onClick={() => handlePageClick(1)}>
+        <li
+          className={currentPage === 1 ? "activePage" : null}
+          key={1}
+          onClick={() => handlePageClick(1)}
+        >
           1
         </li>
       );
@@ -79,7 +89,11 @@ const Page = ({ totalPage:totalPageSize, pageCallbackFn, groupCount }) => {
       for (let i = startPage; i < pageLength; i++) {
         if (i <= totalPage - 1 && i > 1) {
           pages.push(
-            <li className={currentPage === i ? 'activePage' : null} key={i} onClick={() => handlePageClick(i)}>
+            <li
+              className={currentPage === i ? "activePage" : null}
+              key={i}
+              onClick={() => handlePageClick(i)}
+            >
               {i}
             </li>
           );
@@ -90,7 +104,7 @@ const Page = ({ totalPage:totalPageSize, pageCallbackFn, groupCount }) => {
       }
       pages.push(
         <li
-          className={currentPage === totalPage ? 'activePage' : null}
+          className={currentPage === totalPage ? "activePage" : null}
           key={totalPage}
           onClick={() => handlePageClick(totalPage)}
         >
@@ -100,7 +114,7 @@ const Page = ({ totalPage:totalPageSize, pageCallbackFn, groupCount }) => {
     }
     pages.push(
       <li
-        className={currentPage === totalPage ? 'nomore' : null}
+        className={currentPage === totalPage ? "nomore" : null}
         onClick={handleNextPageClick}
         key={totalPage + 1}
       >
@@ -110,7 +124,7 @@ const Page = ({ totalPage:totalPageSize, pageCallbackFn, groupCount }) => {
     return pages;
   };
 
-  return <ul className='pageContainer'>{renderPageList()}</ul>;
+  return <ul className="pageContainer">{renderPageList()}</ul>;
 };
 
 Page.propTypes = {

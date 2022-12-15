@@ -10,6 +10,7 @@ import {
     AlertDescription,
     Box,
 } from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { Link, useNavigate } from 'react-router-dom';
 import md5 from 'md5';
 
@@ -38,8 +39,11 @@ function Login() {
         setPassword('');
         setEmail('');
     }
-    return <Stack spacing={6} w="30%" margin='0 auto' style={{ marginTop: '120px' }}>
+    return <Stack transform="scale(1.1)" spacing={6} w="30%" margin='0 auto' style={{ marginTop: '120px' }} boxShadow={'4px 4px 10px 1px rgb(0 0 0 / 20%)'} borderRadius="30px" padding="30px" backgroundColor='#FFF'>
         <FormControl isInvalid={userNameError}>
+            <Box textAlign='center' marginBottom="20px" fontWeight='bold' fontSize='2xl'>
+                Registration
+            </Box>
             <InputGroup>
                 <InputLeftAddon children='UserName:' w='110px' />
                 <Input value={userName} type='tel' placeholder='User Name' onChange={({ target }) => {
@@ -55,7 +59,7 @@ function Login() {
                 <FormErrorMessage>User name is required.</FormErrorMessage>
             )}
         </FormControl>
-        <FormControl isInvalid={passwordError}>
+        <FormControl isInvalid={passwordError} >
             <InputGroup>
                 <InputLeftAddon children='Password:' w='110px' />
                 <Input type={show ? 'text' : 'password'} value={password} placeholder='Password' onChange={({ target }) => {
@@ -108,7 +112,7 @@ function Login() {
             </Box>
         </Alert>
         <Button colorScheme='teal' size='md' onClick={() => {
-            if(userName === ''||password==='' || email ===''){
+            if (userName === '' || password === '' || email === '') {
                 return;
             }
             let data = {
@@ -116,7 +120,7 @@ function Login() {
                 password: md5(password),
                 email
             };
-            let xhr = new XMLHttpRequest(); 
+            let xhr = new XMLHttpRequest();
             // edited
             xhr.open('POST', `/user/add`);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
@@ -149,7 +153,10 @@ function Login() {
             })
             // reset();
         }}>Registration</Button>
-        <Link to='/'>Return to Login !</Link>
+        <Link to='/' style={{ fontWeight: "bold" }}>
+            <ArrowForwardIcon w={7} h={7} color="#6ea2dc" />
+            Return to Login !
+        </Link>
     </Stack>
 }
 
