@@ -1,11 +1,13 @@
-const uri = process.env.MONGODB_URI;
 const express = require("express"),
   bodyparser = require("body-parser"),
   path = require("path"),
   app = express(),
   pathroutes = path.resolve(__dirname, "routers"),
-  server = process.env.PORT;
-  console.log(uri, server);
+  serveStatic = require('serve-static')
+  // server = process.env.PORT;
+  server = 5005;
+// app.use(serveStatic(path.join(__dirname, "./front/build")));
+app.use((express.static(path.join(__dirname, "./front/build"))));
 app.listen(server, () => {
   console.log(
     `THE WEB SERVICE SUCCESSFULLY AND LISTENING TO THE PORT：${server}!`
@@ -23,7 +25,7 @@ app.use((req, res, next) => {
   }
   next();
 });
-app.use((express.static(path.join(__dirname, "./front/build"))));
+
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 app.use("/login", require(`${pathroutes}/login`));

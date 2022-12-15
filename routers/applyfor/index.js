@@ -19,20 +19,20 @@ applyfor.post("/add", async (req, res) => {
   }
 });
 // query list
-applyfor.get("/list", async (req, res) => {
-  if (!req.query.userid) {
+applyfor.post("/list", async (req, res) => {
+  if (!req.body.userid) {
     res.send({ msg: "userid is null", status: 1 });
     return;
   }
-  let info = await api.findListAll("applyfor", { userid: req.query.userid });
+  let info = await api.findListAll("applyfor", { userid: req.body.userid });
 
   let manageObj = await api.findList(
     "applyfor",
     {
-      userid: req.query.userid,
-      company: new RegExp(req.query.serch)
+      userid: req.body.userid,
+      company: new RegExp(req.body.serch)
     },
-    { skip: +req.query.skip * 5 }
+    { skip: +req.body.skip * 9 }
   );
   res.send({
     msg: "query success！",
