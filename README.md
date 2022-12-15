@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # JobApplicationTracker2.0
 This repo is a web application that provide a job application tracker for job seekers to record all needed information about their job applications. 
 This project was improved from JobApplicationTrackerv1.0 based on Usability Study Report and implemented some design principles.
@@ -209,4 +208,3 @@ npm install prettier
 ![](./front/document/list.png)
 4. Edit Application
 ![](./front/document/edit.png)
->>>>>>> d0011447c8ae398a7b588cc03789335a928e781b
