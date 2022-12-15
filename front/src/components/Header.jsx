@@ -44,6 +44,7 @@ function Header() {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
+    // suggestions for using a separate css file
     return <Box w='100%' p='20px' display='flex' alignItems='center' backgroundColor='#6ea2dc' justifyContent='space-between' borderBottomColor='facebook.500'>
         <Box boxSizing="border-box" color='#f5f5f5' >
             <Box fontSize='4xl' fontWeight='bold'>Job  Application Tracker</Box>
