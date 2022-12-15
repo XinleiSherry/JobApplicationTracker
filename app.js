@@ -1,3 +1,4 @@
+// suggestions to use ES6 instead
 const express = require("express"),
   bodyparser = require("body-parser"),
   path = require("path"),
